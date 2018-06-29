@@ -17,7 +17,7 @@ class InformationViewController: BaseViewController {
 
         view.backgroundColor = .yellow
         
-        let leftBarButton = UIBarButtonItem(title: "折叠", style: .plain, target: self, action: #selector(showAndFoldAction))
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "minecraft"), style: .plain, target: self, action: #selector(showAndFoldAction))
         navigationItem.leftBarButtonItem = leftBarButton
         
     }

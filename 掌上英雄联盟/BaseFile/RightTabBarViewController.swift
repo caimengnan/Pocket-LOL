@@ -13,8 +13,12 @@ class RightTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //添加子控制器
         addChildViewControllers()
+        
     }
+    
+    
     
     
     private func addChildViewControllers() {
@@ -25,9 +29,6 @@ class RightTabBarViewController: UITabBarController {
         setChildViewController(MarketViewController(), title: "商城", imageName: "tab_1_click")
         setChildViewController(CombatGainsViewController(), title: "战绩", imageName: "tab_1_click")
         self.selectedIndex = 0
-//        let myTabbar = FRTabBar()
-//        myTabbar.tabBarDelegate = self
-//        setValue(myTabbar, forKey: "tabBar")
         
     }
     

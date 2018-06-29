@@ -11,3 +11,4 @@ import UIKit
 
 let kHeight:CGFloat = UIScreen.main.bounds.size.height
 let kWidth:CGFloat = UIScreen.main.bounds.size.width
+let edgFrame_X:CGFloat = kWidth * 4 / 5

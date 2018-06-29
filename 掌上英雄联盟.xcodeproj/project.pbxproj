@@ -74,24 +74,80 @@
 		36293EBE20E38FEE00ADFADC /* 掌上英雄联盟 */ = {
 			isa = PBXGroup;
 			children = (
-				36293EBF20E38FEE00ADFADC /* AppDelegate.swift */,
-				36293EC120E38FEE00ADFADC /* TotalViewController.swift */,
-				363141D720E3D44800B9CCC2 /* BaseViewController.swift */,
-				363141C920E3D0E500B9CCC2 /* LeftViewController.swift */,
 				363141D920E3DBFF00B9CCC2 /* AboutMeViewController.swift */,
-				363141CB20E3D10400B9CCC2 /* RightTabBarViewController.swift */,
-				363141CD20E3D12E00B9CCC2 /* InformationViewController.swift */,
-				363141CF20E3D16B00B9CCC2 /* CuteFriendsViewController.swift */,
-				363141D120E3D18700B9CCC2 /* TVViewController.swift */,
 				363141D320E3D19D00B9CCC2 /* MarketViewController.swift */,
-				363141D520E3D1C700B9CCC2 /* CombatGainsViewController.swift */,
-				363141C720E39E3500B9CCC2 /* Main.storyboard */,
-				363141C520E399F800B9CCC2 /* common.swift */,
 				36293EC620E38FF000ADFADC /* Assets.xcassets */,
-				36293EC820E38FF000ADFADC /* LaunchScreen.storyboard */,
-				36293ECB20E38FF000ADFADC /* Info.plist */,
+				3661ECE720E5372D000A0EBC /* BaseFile */,
+				3661ECEB20E537E9000A0EBC /* CombatGains */,
+				3661ECE920E53779000A0EBC /* CuteFriends */,
+				3661ECE820E5376A000A0EBC /* Information */,
+				3661ECEC20E53876000A0EBC /* LeftPart */,
+				3661ECED20E5389B000A0EBC /* Market */,
+				3661ECEA20E537DA000A0EBC /* Television */,
 			);
 			path = "掌上英雄联盟";
+			sourceTree = "<group>";
+		};
+		3661ECE720E5372D000A0EBC /* BaseFile */ = {
+			isa = PBXGroup;
+			children = (
+				363141C720E39E3500B9CCC2 /* Main.storyboard */,
+				36293EC820E38FF000ADFADC /* LaunchScreen.storyboard */,
+				36293ECB20E38FF000ADFADC /* Info.plist */,
+				363141C520E399F800B9CCC2 /* common.swift */,
+				36293EBF20E38FEE00ADFADC /* AppDelegate.swift */,
+				363141D720E3D44800B9CCC2 /* BaseViewController.swift */,
+				36293EC120E38FEE00ADFADC /* TotalViewController.swift */,
+				363141CB20E3D10400B9CCC2 /* RightTabBarViewController.swift */,
+			);
+			path = BaseFile;
+			sourceTree = "<group>";
+		};
+		3661ECE820E5376A000A0EBC /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				363141CD20E3D12E00B9CCC2 /* InformationViewController.swift */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		3661ECE920E53779000A0EBC /* CuteFriends */ = {
+			isa = PBXGroup;
+			children = (
+				363141CF20E3D16B00B9CCC2 /* CuteFriendsViewController.swift */,
+			);
+			path = CuteFriends;
+			sourceTree = "<group>";
+		};
+		3661ECEA20E537DA000A0EBC /* Television */ = {
+			isa = PBXGroup;
+			children = (
+				363141D120E3D18700B9CCC2 /* TVViewController.swift */,
+			);
+			path = Television;
+			sourceTree = "<group>";
+		};
+		3661ECEB20E537E9000A0EBC /* CombatGains */ = {
+			isa = PBXGroup;
+			children = (
+				363141D520E3D1C700B9CCC2 /* CombatGainsViewController.swift */,
+			);
+			path = CombatGains;
+			sourceTree = "<group>";
+		};
+		3661ECEC20E53876000A0EBC /* LeftPart */ = {
+			isa = PBXGroup;
+			children = (
+				363141C920E3D0E500B9CCC2 /* LeftViewController.swift */,
+			);
+			path = LeftPart;
+			sourceTree = "<group>";
+		};
+		3661ECED20E5389B000A0EBC /* Market */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Market;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
