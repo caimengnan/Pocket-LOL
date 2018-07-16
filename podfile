@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+target '掌上英雄联盟' do
+
+pod 'SnapKit'
+pod 'Alamofire'
+pod 'SwiftyJSON'
+pod 'HandyJSON', '~> 4.1.1'
+pod 'Kingfisher'
+end

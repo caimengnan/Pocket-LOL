@@ -10,10 +10,23 @@ import UIKit
 
 class LeftViewController: BaseViewController {
 
+    var bottomView:DynamicView?
+    lazy var bottomImageView: UIImageView = {
+        let bottomImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: edgFrame_X, height: kHeight))
+        bottomImageView.image = UIImage(named: "imageleft")
+        return bottomImageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        addChildViewController(RightTabBarViewController())
+        
+        view.addSubview(bottomImageView)
+        
+        bottomView = DynamicView(frame: CGRect(x: 0, y: 0, width: edgFrame_X, height: kHeight))
+        view.addSubview(bottomView!)
+        
+        
         
         let jumpBtn = UIButton(type: .custom)
         jumpBtn.frame = CGRect(x: 100, y: 100, width: 50, height: 50)

@@ -101,6 +101,7 @@ class TotalViewController: UIViewController {
         
         if point.x > edgFrame_X {
             rightVC.view.frame = rightViewSlideFrame
+            self.view.addSubview(self.coverView)
             return
         }
         
@@ -109,8 +110,7 @@ class TotalViewController: UIViewController {
         
         if ges.state == .ended || ges.state == .cancelled {
             afterLoosenGesturePosition()
-        }
-        
+        } 
         
     }
     

@@ -16,6 +16,8 @@ class InformationViewController: BaseViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .yellow
+        title = "资讯"
+        
         
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "minecraft"), style: .plain, target: self, action: #selector(showAndFoldAction))
         navigationItem.leftBarButtonItem = leftBarButton
