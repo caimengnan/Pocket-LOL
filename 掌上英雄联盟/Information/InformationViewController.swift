@@ -16,36 +16,23 @@ class InformationViewController: BaseViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .yellow
-        title = "资讯"
+        customNavBar.btnTitle = "资讯"
         
-        
-        let leftBarButton = UIBarButtonItem(image: UIImage(named: "minecraft"), style: .plain, target: self, action: #selector(showAndFoldAction))
-        navigationItem.leftBarButtonItem = leftBarButton
+        let btn = UIButton(tittle: "跳转", fontSize: 17, tittleColor: .red)
+        btn.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        btn.backgroundColor = .blue
+        btn.addTarget(self, action: #selector(jumpAction), for: .touchUpInside)
+        view.addSubview(btn)
         
     }
     
-    @objc func showAndFoldAction(sender:UIBarButtonItem) {
-        showStatus = !showStatus
-        sender.title = showStatus ? "折叠" : "展开"
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "changeStatus"), object: nil, userInfo: ["status":showStatus])
+    @objc func jumpAction() {
+        let aboutVc = AboutMeViewController()
+        navigationController?.pushViewController(aboutVc, animated: true)
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

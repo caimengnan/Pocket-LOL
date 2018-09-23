@@ -12,6 +12,7 @@ class TotalViewController: UIViewController {
 
     let leftVC = LeftViewController()
     let rightVC = RightTabBarViewController()
+    var isStoppedAtRight:Bool = false //侧滑状态 true--处于侧滑状态
     
     //透明遮盖视图
     lazy var coverView:UIView = {
@@ -30,26 +31,16 @@ class TotalViewController: UIViewController {
     let rightViewNormalFrame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight)
     let rightViewSlideFrame = CGRect(x: edgFrame_X, y: 0, width: kWidth, height: kHeight)
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        self.navigationController?.navigationBar.isHidden = true
         addTwoChildViewChontroler()
         addScreenEdgeTapAction()
         
         //接收折叠展开的通知
-        NotificationCenter.default.addObserver(self, selector: #selector(changeFramesWithAnimation), name: NSNotification.Name(rawValue: "changeStatus"), object: nil )
+        NotificationCenter.default.addObserver(self, selector: #selector(changeFramesWithAnimation), name: kLeftBtnClickActionNotify, object: nil )
         
     }
     
@@ -60,6 +51,7 @@ class TotalViewController: UIViewController {
     
         if currentPoint.x > edgFrame_X {
             rightVC.view.frame = rightViewSlideFrame
+            isStoppedAtRight = true
             return
         }
         
@@ -79,7 +71,7 @@ class TotalViewController: UIViewController {
     
     //轻拍手势
     @objc func coverTapAction() {
-        if rightVC.view.frame.origin.x == edgFrame_X {
+        if isStoppedAtRight == true {
             moveToNormalFramePosition()
         }
     }
@@ -95,12 +87,13 @@ class TotalViewController: UIViewController {
     
     //往右的侧滑手势事件
     @objc func edgTapAction(ges:UIScreenEdgePanGestureRecognizer) {
-        
+
         let point = ges.location(in: self.view)
         var frame = rightVC.view.frame
         
         if point.x > edgFrame_X {
             rightVC.view.frame = rightViewSlideFrame
+            isStoppedAtRight = true
             self.view.addSubview(self.coverView)
             return
         }
@@ -117,8 +110,7 @@ class TotalViewController: UIViewController {
     
     @objc func changeFramesWithAnimation(notify:Notification) {
         
-        let isSlidered:Bool = (rightVC.view.frame.origin.x == edgFrame_X)
-        if !isSlidered {
+        if !isStoppedAtRight {
             afterSliderPosition()
         }else {
             moveToNormalFramePosition()
@@ -128,8 +120,10 @@ class TotalViewController: UIViewController {
     
     //回到初始位置
     private func moveToNormalFramePosition(){
+        
         UIView.animate(withDuration: 0.3) {
             self.rightVC.view.frame = self.rightViewNormalFrame
+            self.isStoppedAtRight = false
             self.coverView.removeFromSuperview()
         }
     }
@@ -138,6 +132,7 @@ class TotalViewController: UIViewController {
     private func afterSliderPosition(){
         UIView.animate(withDuration: 0.3) {
             self.rightVC.view.frame = self.rightViewSlideFrame
+            self.isStoppedAtRight = true
             self.view.addSubview(self.coverView)
         }
     }
@@ -146,6 +141,7 @@ class TotalViewController: UIViewController {
     private func afterLoosenGesturePosition() {
         UIView .animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
             self.rightVC.view.frame = self.rightViewSlideFrame
+            self.isStoppedAtRight = true
         }, completion: { (completed) in
             self.view.addSubview(self.coverView)
         })

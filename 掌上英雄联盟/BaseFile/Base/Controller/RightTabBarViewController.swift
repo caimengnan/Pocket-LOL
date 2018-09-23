@@ -38,10 +38,8 @@ class RightTabBarViewController: UITabBarController {
 //        childController.tabBarItem.selectedImage = UIImage(named: imageName + "_click")?.withRenderingMode(.alwaysOriginal)
         
         childController.tabBarItem.title = title
-        print(title)
-        
         //添加导航控制器为TabbarController的子控制器
-        let nav = UINavigationController(rootViewController: childController)
+        let nav = BaseNaviViewController(rootViewController: childController)
         addChildViewController(nav)
         
     }
@@ -49,7 +47,6 @@ class RightTabBarViewController: UITabBarController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

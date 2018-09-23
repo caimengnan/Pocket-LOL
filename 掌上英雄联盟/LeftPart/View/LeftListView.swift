@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LeftListView: UIView {
+class LeftListView: UIView,NibLoadProtocol {
 
     /*
     // Only override draw() if you perform custom drawing.

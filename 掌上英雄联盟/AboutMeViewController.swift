@@ -9,27 +9,28 @@
 import UIKit
 
 class AboutMeViewController: BaseViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.leftTittle = "你好"
+        view.backgroundColor = .red
+        
+        let btn = UIButton(tittle: "跳转", fontSize: 17, tittleColor: .red)
+        btn.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        btn.backgroundColor = .blue
+        btn.addTarget(self, action: #selector(jumpAction), for: .touchUpInside)
+        view.addSubview(btn)
+        
+    }
+    
+    @objc func jumpAction() {
+        let aboutVc = MarketViewController()
+        navigationController?.pushViewController(aboutVc, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

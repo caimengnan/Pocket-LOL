@@ -11,6 +11,7 @@ import CoreMotion
 
 class DynamicView: UIView {
 
+    private lazy var listView = LeftListView.loadViewNib()
     var motionManager:CMMotionManager?
     var dynamicAnimation:UIDynamicAnimator?
     var dynamicItem:UIDynamicItemBehavior?
@@ -28,6 +29,12 @@ class DynamicView: UIView {
         self.backgroundColor = .clear
         setUpDynamicSettings()
         addAnimationViews()
+        addListView()
+    }
+    
+    func addListView() {
+        listView.frame = self.bounds
+        self.addSubview(listView)
     }
     
     //初始化物理引擎

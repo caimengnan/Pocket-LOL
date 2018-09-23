@@ -8,18 +8,18 @@
 
 import UIKit
 
-class LeftViewController: BaseViewController {
+class LeftViewController: UIViewController {
 
     var bottomView:DynamicView?
     lazy var bottomImageView: UIImageView = {
         let bottomImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: edgFrame_X, height: kHeight))
-        bottomImageView.image = UIImage(named: "imageleft")
+        bottomImageView.image = UIImage(named: "123")
         return bottomImageView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .black
         
         view.addSubview(bottomImageView)
         
