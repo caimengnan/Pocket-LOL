@@ -14,11 +14,15 @@ class CMNCustomNavBar: CMNView {
     var leftButton = UIButton(tittle: "", fontSize: 17, tittleColor: .black)
     var rightButton = UIButton(tittle: "", fontSize: 17, tittleColor: .black)
     var middleTittleView:UIView!
+    var constValue:CGFloat = 50
+    var commentheight:CGFloat = 44
+    
     
     //左边按钮的图片
     var btnImage:UIImage? {
         didSet {
             leftButton.setImage(btnImage, for: .normal)
+            leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0)
         }
     }
     
@@ -26,16 +30,23 @@ class CMNCustomNavBar: CMNView {
     var btnTitle:String? {
         didSet {
             leftButton.setTitle(btnTitle, for: .normal)
+            leftButton.titleLabel?.text = btnTitle
+            leftButton.setTitleColor(.red, for: .normal)
         }
     }
 
     override func layoutSubviews() {
+        self.backgroundColor = .white
         
-        leftButton.frame = CGRect(x: 5, y: kStatusHeight, width: 50, height: 44)
+        leftButton.frame = CGRect(x: 5, y: kStatusHeight, width: constValue, height: commentheight)
         self.addSubview(leftButton)
         
-        rightButton.frame = CGRect(x: kWidth - 50 - 5, y: kStatusHeight, width: 50, height: 44)
+        rightButton.frame = CGRect(x: kWidth - constValue - 5, y: kStatusHeight, width: constValue, height: commentheight)
         self.addSubview(rightButton)
+        
+        middleTittleView = UIView(frame: CGRect(x: constValue, y: kStatusHeight, width: kWidth-2*constValue, height: commentheight))
+        middleTittleView.backgroundColor = .clear
+        self.addSubview(middleTittleView)
         
     }
     

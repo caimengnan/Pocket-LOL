@@ -135,13 +135,18 @@ class TransitionAnimation: NSObject,UIViewControllerAnimatedTransitioning {
             
         }) { (finished) in
            
-            //手势松开未执行pop和执行了pop的判断
+            //手势松开未执行pop和执行了pop的判断  false 执行了pop操作  true执行了取消pop操作
             let hasCancelled = transitionContext.transitionWasCancelled
+            
             transitionContext.completeTransition(!hasCancelled)
             
             if hasCancelled == false {
+                
+                self.toVC.navigationController?.delegate = self.toVC as? UINavigationControllerDelegate
+                
                 self.toVC.tabBarController?.tabBar.isHidden = false
                 SnapImage.imageArray.removeLast() //每次pop完成之后移除最后一张图片
+                
             }
             
             screenSnapImage_to?.removeFromSuperview()
