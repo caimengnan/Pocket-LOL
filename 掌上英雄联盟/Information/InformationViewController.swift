@@ -19,7 +19,7 @@ class InformationViewController: BaseViewController {
         customNavBar.btnTitle = "资讯"
         
         let btn = UIButton(tittle: "跳转", fontSize: 17, tittleColor: .red)
-        btn.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        btn.frame = CGRect(x: 100, y: 10, width: 100, height: 50)
         btn.backgroundColor = .blue
         btn.addTarget(self, action: #selector(jumpAction), for: .touchUpInside)
         view.addSubview(btn)

@@ -74,7 +74,7 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate {
     }
     
     //侧滑事件
-    @objc func edgTapAction(ges:UIScreenEdgePanGestureRecognizer) {
+    @objc func edgTapAction(ges:UIPanGestureRecognizer) {
         
         //判断是否是RootView
         if isRootView == true {
@@ -86,22 +86,21 @@ class BaseViewController: UIViewController,UINavigationControllerDelegate {
         //找到当前点
         let translation = ges.translation(in: ges.view)
         //translation.x > 0 表示向右滑动， translation.x < 0 表示向左滑动 translation.x == 0 表示手势刚开始
-        if translation.x < 0 {
-            return
-        }
+        
         
         var percentComplete = 0.0
         print(translation.x)
         
         //滑动比例
         percentComplete = Double(translation.x / kWidth)
-        percentComplete = Double(fabsf(Float(percentComplete)))
+        if translation.x < 0 {
+            percentComplete = 0.0
+        }
         
         switch ges.state {
         case .began:
             
             isInteractive = true
-            
             let currentVCArray = self.navigationController?.viewControllers
             if (currentVCArray?.count)! > 1 {
                 self.navigationController?.popViewController(animated: true)
